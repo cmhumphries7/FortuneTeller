@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class fortuneTeller {
@@ -17,56 +19,55 @@ public class fortuneTeller {
 
 		System.out.println("Which month were you born?");
 		int month = input.nextInt();
-		String monthString;
+		int monthInt;
 
 		switch (month) {
 		case 1:
-			monthString = "January";
+			monthInt = 1;
 			break;
 		case 2:
-			monthString = "February";
+			monthInt = 2;
 			break;
 		case 3:
-			monthString = "March";
+			monthInt = 3;
 			break;
 		case 4:
-			monthString = "April";
+			monthInt = 4;
 			break;
 		case 5:
-			monthString = "May";
+			monthInt = 5;
 			break;
 		case 6:
-			monthString = "June";
+			monthInt = 6;
 			break;
 		case 7:
-			monthString = "July";
+			monthInt = 7;
 			break;
 		case 8:
-			monthString = "August";
+			monthInt = 8;
 			break;
 		case 9:
-			monthString = "September";
+			monthInt = 9;
 			break;
 		case 10:
-			monthString = "October";
+			monthInt = 10;
 			break;
 		case 11:
-			monthString = "November";
+			monthInt = 11;
 			break;
 		case 12:
-			monthString = "December";
+			monthInt = 12;
 			break;
 		default:
-			monthString = "Invalid month";
 			System.out.println("Invalid month.");
 			break;
 		}
 
 		input.nextLine();
 
+		String color = "";
 		boolean hasColor = false;
 		System.out.println("What is your favorite ROYGBIV color? Or enter 'help' for assistance.");
-		String color;
 
 		while (hasColor == false) {
 			color = input.nextLine();
@@ -95,21 +96,75 @@ public class fortuneTeller {
 			retirementAge = 30;
 		}
 
-		String vacationHome;
-		
-		if(siblings == 0) {
+		String vacationHome = null;
+
+		if (siblings == 0) {
 			vacationHome = "Toyko, Japan";
-		
+
 		} else if (siblings == 1) {
 			vacationHome = "Montreal, Canada";
-			
+
 		} else if (siblings == 2) {
 			vacationHome = "Miami, Florida";
-			
+
+		} else if (siblings == 3) {
+			vacationHome = "your mother's basement";
+
+		} else if (siblings > 3) {
+			vacationHome = "Topeka, Kansas";
+
+		} else if (siblings < 0) {
+			vacationHome = "Atlantis, The Ocean";
+
 		}
-		
-		
-		
-		
+
+		String modeOfTransportation = "";
+
+		if (color.equals("red")) {
+			modeOfTransportation = "Mini-Cooper";
+
+		} else if (color.equals("orange")) {
+			modeOfTransportation = "a wild stallion";
+
+		} else if (color.equals("yellow")) {
+			modeOfTransportation = "Jaguar";
+
+		} else if (color.equals("green")) {
+			modeOfTransportation = "a flying carpet";
+
+		} else if (color.equals("blue")) {
+			modeOfTransportation = "a Tardis";
+
+		} else if (color.equals("indigo")) {
+			modeOfTransportation = "a pickup truck";
+
+		} else if (color.equals("purple")) {
+			modeOfTransportation = "DeLorean";
+		} else {
+			modeOfTransportation = "a segway";
+		}
+
+		NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+		double bankBalance;
+
+		if (month > 0 && month < 5) {
+			bankBalance = 999999.99;
+		}
+
+		else if (month > 4 && month < 9) {
+			bankBalance = 252.78;
+		}
+
+		else if (month > 8 && month < 13) {
+			bankBalance = 200875.45;
+		}
+
+		else {
+			bankBalance = 0.00;
+		}
+
+		System.out.println(firstName + " " + lastName + " will retire in " + retirementAge + " years with "
+				+ formatter.format(bankBalance) + " in the bank, a vacation home in " + "" + vacationHome
+				+ ", and travel by " + modeOfTransportation + ".");
 	}
 }
